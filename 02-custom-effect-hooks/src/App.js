@@ -1,26 +1,23 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-
-const useFetch = (config) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const { url, skip, take } = config;
-    const resource = `${url}?$skip=${skip}&take=${take}`;
-    axios({ url: resource }).then(response => setData(response.data));
-  }, [config.url, config.skip, config.take]);
-
-  return data;
-};
+import { usePokemon } from "./usePokemon";
 
 const App = () => {
-  const data = useFetch({ url: "/users", take: 10, skip: 0 });
+  const { pokemon, isLoading, error } = usePokemon("pikachu");
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
+  if (error) {
+    return <>Network error</>;
+  }
+
   return (
-    <div>
-      {data.map(d => (
-        <div>{d}</div>
-      ))}
-    </div>
+    <>
+      <img src={pokemon.sprites.front_default} alt="pokemon" />
+      <h1>{pokemon.species.name}</h1>
+    </>
   );
 };
+
+export default App;
