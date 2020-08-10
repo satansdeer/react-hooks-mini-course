@@ -2,7 +2,7 @@ import React from "react";
 import { usePokemon } from "./usePokemon";
 
 const App = () => {
-  const { pokemon, isLoading, error } = usePokemon("pikachu");
+  const { pokemon, isLoading, error } = usePokemon("ditto");
 
   if (isLoading) {
     return <>Loading...</>;

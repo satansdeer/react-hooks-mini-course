@@ -9,7 +9,7 @@ export const useMousePosition = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("mosemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import {useCounter} from './useCounter'
+import React from "react";
+import { useCounter } from "./useCounter";
 
 function App() {
-  const {count, increment, decrement} = useCounter()
+  const [count, { increment, decrement }] = useCounter();
 
   return (
     <>
